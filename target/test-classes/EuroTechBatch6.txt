@@ -1,0 +1,3 @@
+Hello World !!!
+
+/Users/nihanuygur/IdeaProjects/Batch6TestNGSeleniumNihan/src/test/resources/EuroTechBatch6.txt

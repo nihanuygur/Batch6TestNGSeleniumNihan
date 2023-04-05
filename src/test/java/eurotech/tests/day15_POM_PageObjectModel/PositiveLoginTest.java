@@ -1,8 +1,10 @@
-package eurotech.tests.day15_POM;
+package eurotech.tests.day15_POM_PageObjectModel;
 
 import eurotech.Pages.LoginPage;
 import eurotech.tests.TestBase;
 import eurotech.utilities.ConfigurationReader;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -54,6 +56,8 @@ public class PositiveLoginTest extends TestBase {
         Thread.sleep(2000);
         Assert.assertEquals(driver.getCurrentUrl(), "http://eurotech.study/dashboard",
                                           "Verifying that user successfully logged in ");
-
     }
+
+
+
 }

@@ -1,4 +1,4 @@
-package eurotech.tests.day15_POM;
+package eurotech.tests.day15_POM_PageObjectModel;
 
 import eurotech.Pages.LoginPage;
 import eurotech.tests.TestBase;

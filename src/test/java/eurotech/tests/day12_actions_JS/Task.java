@@ -122,12 +122,17 @@ public class Task {
     @Test
     public void dragDrop2() {
         driver.get("https://demo.aspnetawesome.com/DragAndDropDemo");
+        driver.manage().window().maximize();
         Actions actions = new Actions(driver);
 
         WebElement target = driver.findElement(By.cssSelector("div.dropZone"));
         WebElement source1 = driver.findElement(By.xpath("//div[text()='a']"));
 
         actions.dragAndDrop(source1, target).perform();
+
+        int actualSize = driver.findElements(By.xpath("//*[@class='dropZone'][2]/div")).size();
+
+        Assert.assertEquals(actualSize,1,"Verifying actual size is 1");
 
     }
 

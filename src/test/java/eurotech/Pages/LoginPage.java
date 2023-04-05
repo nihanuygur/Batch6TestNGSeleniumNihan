@@ -5,15 +5,15 @@ import eurotech.utilities.Driver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.FindBys;
 import org.openqa.selenium.support.PageFactory;
 
-public class LoginPage {
+public class LoginPage extends BasePage{
 
 
-    public LoginPage() {
-        PageFactory.initElements(Driver.get(), this);
-    }
+
 
     @FindBy(css = "#rcc-confirm-button")
     public WebElement iUnderstandButton;
@@ -31,30 +31,40 @@ public class LoginPage {
     public WebElement warningMessage;
 
 
-    public void login(String userName, String password) {
+    //@FindAll
+    //To use multiple locator if at least one of them is matching it will find the web element.
+    @FindAll({
+            @FindBy(id = "loginpage-input-email"),
+            @FindBy(name = "email")})
+    public WebElement emailInput;
 
+
+    //@FindBys
+    // if the locators are matching with element then it will return it. And logic applies here
+    @FindBys({
+            @FindBy(xpath="//input[@type='email']"),
+            @FindBy(id="loginpage-input-email")})
+
+    public WebElement passwordInputFindBys;
+
+
+    public void login(String username, String password){
         iUnderstandButton.click();
-        usernameInput.sendKeys(userName);
+        usernameInput.sendKeys(username);
         passwordInput.sendKeys(password);
         loginButton.click();
     }
-    public void loginAsTeacher() {
-        String userName = ConfigurationReader.get("userTeacher");
+
+    public void loginAsTeacher(){
+        String username = ConfigurationReader.get("userTeacher");
         String password = ConfigurationReader.get("userPassword");
-
-        iUnderstandButton.click();
-        usernameInput.sendKeys(userName);
-        passwordInput.sendKeys(password);
-        loginButton.click();
+        login(username, password);
     }
-    public void loginAsStudent() {
-        String userName = ConfigurationReader.get("usernameStudent");
-        String password = ConfigurationReader.get("passwordStudent");
 
-        iUnderstandButton.click();
-        usernameInput.sendKeys(userName);
-        passwordInput.sendKeys(password);
-        loginButton.click();
+    public void loginAsStudent(){
+        String username = ConfigurationReader.get("usernameStudent");
+        String password = ConfigurationReader.get("passwordStudent");
+        login(username, password);
     }
 
 
